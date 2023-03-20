@@ -10,7 +10,7 @@ namespace CarsStore
         public override event CarAddedDelegate CarAdded;
 
         private List<float> cars = new List<float>();
-
+        
         public PassengerCar(string carBand, string carModel, float carPrice)
             : base(carBand, carModel, carPrice)
         {
@@ -63,16 +63,20 @@ namespace CarsStore
         {
             var statistics = new Statistics();
             statistics.Sum = 0;
+            
+            
 
             foreach (var car in this.cars)
             if (car >= 0)
                 {
                     statistics.Sum += car;
                     statistics.PriceForModel = statistics.Sum * CarPrice;
-                    
+
                 }
             return statistics;
         }
+
     }
+
 }
 

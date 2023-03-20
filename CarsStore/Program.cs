@@ -1,4 +1,5 @@
-﻿using CarsStore;
+﻿using System.Diagnostics.CodeAnalysis;
+using CarsStore;
 
 Console.WriteLine("Witamy w programie CarStore do obsługi magazynu samochodowego");
 Console.WriteLine("=============================================================");
@@ -16,7 +17,7 @@ var passengerCarA3 = new PassengerCar("Audi", "A3", 2000);
 passengerCarA3.CarAdded += PassengerCarA3_CarAdded;
 void PassengerCarA3_CarAdded(object sender, EventArgs args)
 {
-    Console.WriteLine("Dodano nową ilość sprzedanych samochodów modelu A1.");
+    Console.WriteLine("Dodano nową ilość sprzedanych samochodów modelu A3.");
 }
 
 var passengerCarA4 = new PassengerCar("Audi", "A4", 3000);
@@ -98,11 +99,33 @@ var statisticsA1 = passengerCarA1.GetStatistics();
 var statisticsA3 = passengerCarA3.GetStatistics();
 var statisticsA4 = passengerCarA4.GetStatistics();
 
-Console.WriteLine("===================================================================================================================");
-Console.WriteLine("===================================================================================================================");
+float[] totalcars = { statisticsA1.Sum, statisticsA3.Sum, statisticsA4.Sum};
+float statisticsTotalCar = 0;
+for (int i = 0; i < totalcars.Length; i++)
+{
+    statisticsTotalCar += totalcars[i];
+}
 
-Console.WriteLine($"Łącznie sprzedano  samochodów model A1:  {statisticsA1.Sum}, za łączną cene : {statisticsA1.PriceForModel} euro. ");
-Console.WriteLine("====================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano  samochodów model A3:  {statisticsA3.Sum}, za łączną cene : {statisticsA3.PriceForModel} euro. ");
-Console.WriteLine("===================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano  samochodów model A4:  {statisticsA4.Sum}, za łączną cene : {statisticsA4.PriceForModel} euro. ");
+float[] totalprice = { statisticsA1.PriceForModel, statisticsA3.PriceForModel, statisticsA4.PriceForModel};
+float statisticsTotalPrice = 0;
+for (int i = 0; i < totalprice.Length; i++)
+{
+    statisticsTotalPrice += totalprice[i];
+}
+
+
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine("=======================================================================================================================");
+Console.WriteLine($"Łącznie sprzedano  samochodów model A1:  {statisticsA1.Sum} sztuk, za łączną cenę : {statisticsA1.PriceForModel} euro. ");
+Console.WriteLine("=======================================================================================================================");
+Console.WriteLine($"Łącznie sprzedano  samochodów model A3:  {statisticsA3.Sum} sztuk, za łączną cenę : {statisticsA3.PriceForModel} euro. ");
+Console.WriteLine("=======================================================================================================================");
+Console.WriteLine($"Łącznie sprzedano  samochodów model A4:  {statisticsA4.Sum} sztuk, za łączną cenę : {statisticsA4.PriceForModel} euro. ");
+Console.WriteLine("=======================================================================================================================");
+Console.WriteLine($"Łącznie sprzedano samochodów wsztykich modeli: {statisticsTotalCar} sztuk, za łączną cenę {statisticsTotalPrice} euro." );
+Console.WriteLine("========================================================================================================================");
+//Console.WriteLine($"Średnia cena za jeden egzemplarz to : {statisticAveragePrice:N2} euro.")
+
+
+
+

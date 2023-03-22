@@ -1,27 +1,32 @@
 ﻿
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using static CarsStore.CarBase;
 
 namespace CarsStore
 {
     public class PassengerCar : CarBase
     {
+        private const string fileName = "passengercars.txt";
         public override event CarAddedDelegate CarAdded;
 
-        private List<float> cars = new List<float>();
-        
+        //private List<float> cars = new List<float>();
         public PassengerCar(string carBand, string carModel, float carPrice)
             : base(carBand, carModel, carPrice)
         {
 
-        } 
+        }
 
         public override void AddCar (float car) 
         {
             if (car >=0 && car <= 25)
             {
-                this.cars.Add(car);
+                using (var writer = File.AppendText(fileName))
+                {
+                     writer.WriteLine(car);
+                }
+               //this.cars.Add(car);
                 if (CarAdded != null)
                 {
                     CarAdded(this, new EventArgs());
@@ -59,24 +64,49 @@ namespace CarsStore
             this.AddCar(carAsInt);
         }
 
-        public override Statistics GetStatistics() 
+        public override Statistics GetStatistics()
         {
-            var statistics = new Statistics();
-            statistics.Sum = 0;
-            
-            
+            var carFromFile = this.ReadCarsFromFile();
+            var result = this.CountStatistics(carFromFile);
+            return result;
+        }
 
-            foreach (var car in this.cars)
-            if (car >= 0)
+        private List<float> ReadCarsFromFile()
+        {
+            var cars = new List<float>();
+            if (File.Exists($"{fileName}"))
+            {
+                using (var reader = File.OpenText($"{fileName}"))
+                {
+                    var line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        var numer = float.Parse(line);
+                        cars.Add(numer);
+                        line = reader.ReadLine();
+                    }
+                }
+            }
+            return cars;
+        }
+
+        private Statistics CountStatistics(List<float> cars )
+        {
+           var statistics = new Statistics();
+           statistics.Sum = 0;
+
+        foreach (var car in cars)
+        if (car >= 0)
                 {
                     statistics.Sum += car;
                     statistics.PriceForModel = statistics.Sum * CarPrice;
 
                 }
-            return statistics;
-        }
+        return statistics;
 
+        }  
+      } 
     }
 
-}
+
 

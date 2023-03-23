@@ -17,9 +17,8 @@ namespace CarsStore
 
         void AddCar(double car);
 
-        void AddCar(int point);
+        void AddCar(int car);
 
-      
         event CarAddedDelegate CarAdded;
         Statistics GetStatistics();
     }

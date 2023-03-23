@@ -19,7 +19,6 @@ while (true)
     Console.WriteLine("Uwaga, ze względów technicznych nasz magazyn może sprzedać jedynie 25 sztuk samochodów osobowych w ciągu jednego dnia.");
     var input = Console.ReadLine();
 
-
     if (input == "w")
     {
         break;
@@ -33,9 +32,7 @@ while (true)
     {
        Console.WriteLine($"{ex.Message}");
     }
-    
 }
-
 var truckCar = new TruckCar("Audi", "ciężarowy", 8000);
 truckCar.CarAdded += TruckCar_CarAdded;
 void TruckCar_CarAdded(object sender, EventArgs args)
@@ -48,7 +45,6 @@ while (true)
     Console.WriteLine("Podaj liczbe sprzedaych samochodów ciężarowych w kolejnych dniach. W celu zakończenia naciśnij litere w.");
     Console.WriteLine("Uwaga, ze względów technicznych nasz magazyn może sprzedać jedynie 15 sztuk samochodów ciężarowych w ciągu jednego dnia.");
     var input = Console.ReadLine();
-
 
     if (input == "w")
     {
@@ -63,7 +59,6 @@ while (true)
     {
         Console.WriteLine($"{ex.Message}");
     }
-
 }
 var statisticsPassengerCar = passengerCar.GetStatistics();
 var statisticsTruckCar = truckCar.GetStatistics();
@@ -75,25 +70,24 @@ for (int i = 0; i < totalcars.Length; i++)
     statisticsTotalCar += totalcars[i];
 }
 
-float[] totalprice = { statisticsPassengerCar.PriceForModel, statisticsTruckCar.PriceForModel};
-float statisticsTotalPrice = 0;
-for (int i = 0; i < totalprice.Length; i++)
-{
-    statisticsTotalPrice += totalprice[i];
-}
-
-var statisticsAveragePrice = statisticsTotalPrice / statisticsTotalCar;
-
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano  samochodów osobowych:{statisticsPassengerCar.Sum} sztuk, za łączną cenę: {statisticsPassengerCar.PriceForModel} euro.");
+Console.WriteLine($"Łącznie sprzedano  samochodów osobowych:{statisticsPassengerCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych: {statisticsTruckCar.Sum} sztuk. za łączną cenę: {statisticsTruckCar.PriceForModel} euro.");
+Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych: {statisticsTruckCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano samochodów: {statisticsTotalCar} sztuk, za łączną cenę {statisticsTotalPrice} euro." );
+Console.WriteLine($"Łącznie sprzedano samochodów: {statisticsTotalCar} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średnia cena za jeden egzemplarz to : {statisticsAveragePrice:N2} euro.");
-
-
-
-
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Min} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Average} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Average} sztuk.");
+Console.WriteLine("========================================================================================================================");
+Console.WriteLine("========================================================================================================================");

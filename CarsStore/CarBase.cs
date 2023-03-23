@@ -25,8 +25,9 @@ namespace CarsStore
 
         public abstract void AddCar(double car);
 
-        public abstract void AddCar(int point);
+        public abstract void AddCar(int car);
 
+        
         public abstract Statistics GetStatistics();
     }
 }

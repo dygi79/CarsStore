@@ -11,27 +11,25 @@ namespace CarsStore
         private const string fileName = "passengercars.txt";
         public override event CarAddedDelegate CarAdded;
 
-        //private List<float> cars = new List<float>();
         public PassengerCar(string carBand, string carModel, float carPrice)
             : base(carBand, carModel, carPrice)
         {
 
         }
-
-        public override void AddCar (float car) 
+        public override void AddCar(float car)
         {
-            if (car >=0 && car <= 25)
+            if (car >= 0 && car <= 25)
             {
                 using (var writer = File.AppendText(fileName))
                 {
-                     writer.WriteLine(car);
+                    writer.WriteLine(car);
                 }
-               //this.cars.Add(car);
+
                 if (CarAdded != null)
                 {
                     CarAdded(this, new EventArgs());
                 }
-            }    
+            }
             else
             {
                 throw new Exception("Podałeś nieprawidłową wartość.");
@@ -89,24 +87,20 @@ namespace CarsStore
             }
             return cars;
         }
+         private Statistics CountStatistics(List<float> cars )
+         {
+            var statistics = new Statistics();
+            
 
-        private Statistics CountStatistics(List<float> cars )
-        {
-           var statistics = new Statistics();
-           statistics.Sum = 0;
+         foreach (var car in cars)
+         
+                 {
+                     statistics.AddCar(car);
+                 }
+         return statistics;
 
-        foreach (var car in cars)
-        if (car >= 0)
-                {
-                    statistics.Sum += car;
-                    statistics.PriceForModel = statistics.Sum * CarPrice;
-
-                }
-        return statistics;
-
-        }  
-      } 
+         }   
+       }
     }
-
-
-
+    
+         

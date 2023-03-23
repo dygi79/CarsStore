@@ -4,13 +4,13 @@ namespace CarsStore
     public class Statistics
     {
        
-        public float Sum { get; set; }
+        public float Sum { get; private set; }
 
-        public int CarsCount { get; set; }
+        public int CarsCount { get; private set; }
 
-        public float Min { get; set; }
+        public float Min { get;  private set; }
 
-        public float Max { get; set; }
+        public float Max { get; private set; }
 
 
         public float Average

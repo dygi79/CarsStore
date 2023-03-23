@@ -5,11 +5,11 @@ namespace CarsStore
 {
     public interface ICarsStore
     {
-        public string CarBand { get; set; }
+        public string CarBand { get; }
 
-        public string CarModel { get; set; }
+        public string CarModel { get; }
 
-        public float CarPrice { get; set; }
+        public float CarPrice { get; }
 
         void AddCar(float car);
 

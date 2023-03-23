@@ -82,12 +82,12 @@ Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych w ciąg
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Average} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Average} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("========================================================================================================================");

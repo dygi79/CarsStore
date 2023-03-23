@@ -13,11 +13,11 @@ namespace CarsStore
             this.CarPrice = carPrice;
         }
 
-        public string CarBand { get; set; }
+        public string CarBand { get; private set; }
 
-        public string CarModel { get; set; }
+        public string CarModel { get;private set; }
 
-        public float CarPrice { get; set; }
+        public float CarPrice { get; private set; }
 
         public abstract void AddCar(float car);
 

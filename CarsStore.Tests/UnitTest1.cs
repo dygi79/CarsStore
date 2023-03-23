@@ -6,7 +6,7 @@ namespace CarsStore.Tests
         [Test]
         public void TestMedotyMaxMin()
         {
-            var passengerCar = new PassengerCar("A1", "osobowy", 1000);
+            var passengerCar = new PassengerCar("Audi", "osobowy", 1000);
             passengerCar.AddCar(15);
             passengerCar.AddCar(8);
             passengerCar.AddCar(5);
@@ -22,7 +22,7 @@ namespace CarsStore.Tests
 
         public void TestMetodySumAverage()
         {
-            var truckCar = new TruckCar("MAN", "ciêzarowy", 8000);
+            var truckCar = new TruckCar("Audi", "ciêzarowy", 8000);
             truckCar.AddCar(15);
             truckCar.AddCar(8);
             truckCar.AddCar(5);

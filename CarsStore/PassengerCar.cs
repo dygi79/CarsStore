@@ -1,9 +1,4 @@
-﻿
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using static CarsStore.CarBase;
-
+﻿using static CarsStore.CarBase;
 namespace CarsStore
 {
     public class PassengerCar : CarBase
@@ -16,7 +11,8 @@ namespace CarsStore
         {
 
         }
-        public override void AddCar(float car)
+
+        public override void AddDailySale(int car)
         {
             if (car >= 0 && car <= 25)
             {
@@ -35,31 +31,22 @@ namespace CarsStore
                 throw new Exception("Podałeś nieprawidłową wartość.");
             }
         }
-        public override void AddCar(string car)
+
+        public override void AddDailySale(string car)
         {
-            if (float.TryParse(car, out float result))
+            if (int.TryParse(car, out int result))
             {
-                this.AddCar(result);
+                this.AddDailySale(result);
             }
             else if (char.TryParse(car, out char letter))
             {
-                this.AddCar(letter);
+                this.AddDailySale(letter);
             }
             else
             {
                 throw new Exception("Podaj prawidłową wartość.");
 
             }
-        }
-        public override void AddCar(double car)
-        {
-            float carAsFloat = (float)car;
-            this.AddCar(carAsFloat);
-        }
-        public override void AddCar(int car)
-        {
-            float carAsInt = (int)car;
-            this.AddCar(carAsInt);
         }
 
         public override Statistics GetStatistics()
@@ -87,20 +74,19 @@ namespace CarsStore
             }
             return cars;
         }
-         private Statistics CountStatistics(List<float> cars )
-         {
+
+        private Statistics CountStatistics(List<float> cars)
+        {
             var statistics = new Statistics();
-            
 
-         foreach (var car in cars)
-         
-                 {
-                     statistics.AddCar(car);
-                 }
-         return statistics;
+            foreach (var car in cars)
 
-         }   
-       }
+            {
+                statistics.AddDailySale(car);
+            }
+            return statistics;
+        }
     }
-    
-         
+}
+
+

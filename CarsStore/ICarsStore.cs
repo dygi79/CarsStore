@@ -11,13 +11,9 @@ namespace CarsStore
 
         public float CarPrice { get; }
 
-        void AddCar(float car);
+        void AddDailySale(int car);
 
-        void AddCar(string car);
-
-        void AddCar(double car);
-
-        void AddCar(int car);
+        void AddDailySale(string car);
 
         event CarAddedDelegate CarAdded;
         Statistics GetStatistics();

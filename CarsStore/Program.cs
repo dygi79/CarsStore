@@ -1,14 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using CarsStore;
+﻿using CarsStore;
 
 Console.WriteLine("Witamy w programie CarStore do obsługi magazynu samochodowego");
 Console.WriteLine("=============================================================");
 Console.WriteLine();
-
 var passengerCar = new PassengerCar("Audi", "osobowy", 1000);
-passengerCar.CarAdded += PassengerCar_CarAdded;
+passengerCar.CarAdded += PassengerCar_AddDailySale;
 
-void PassengerCar_CarAdded(object sender, EventArgs args)
+void PassengerCar_AddDailySale(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ilość sprzedanych samochodów osobowych.");
 }
@@ -25,17 +23,19 @@ while (true)
     }
     try
     {
-        passengerCar.AddCar(input);
+        passengerCar.AddDailySale(input);
     }
 
     catch (Exception ex)
     {
-       Console.WriteLine($"{ex.Message}");
+        Console.WriteLine($"{ex.Message}");
     }
 }
+
 var truckCar = new TruckCar("Audi", "ciężarowy", 8000);
-truckCar.CarAdded += TruckCar_CarAdded;
-void TruckCar_CarAdded(object sender, EventArgs args)
+truckCar.CarAdded += TruckCar_AddDailySale;
+
+void TruckCar_AddDailySale(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ilość sprzedanych samochodów ciężarowych.");
 }
@@ -52,7 +52,7 @@ while (true)
     }
     try
     {
-        truckCar.AddCar(input);
+        truckCar.AddDailySale(input);
     }
 
     catch (Exception ex)
@@ -63,7 +63,7 @@ while (true)
 var statisticsPassengerCar = passengerCar.GetStatistics();
 var statisticsTruckCar = truckCar.GetStatistics();
 
-float[] totalcars = { statisticsPassengerCar.Sum, statisticsTruckCar.Sum};
+float[] totalcars = { statisticsPassengerCar.Sum, statisticsTruckCar.Sum };
 float statisticsTotalCar = 0;
 for (int i = 0; i < totalcars.Length; i++)
 {
@@ -72,22 +72,22 @@ for (int i = 0; i < totalcars.Length; i++)
 
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano  samochodów osobowych:{statisticsPassengerCar.Sum} sztuk.");
+Console.WriteLine($"Łącznie sprzedano  samochodów osobowych marki Audi:{statisticsPassengerCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych: {statisticsTruckCar.Sum} sztuk.");
+Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych marki Audi: {statisticsTruckCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano samochodów: {statisticsTotalCar} sztuk.");
+Console.WriteLine($"Łącznie sprzedano wszystkich samochodów marki Audi: {statisticsTotalCar} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Min} sztuk.");
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Min} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych w ciągu jednego dnia: {statisticsPassengerCar.Average:N2} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych w ciągu jednego dnia: {statisticsTruckCar.Average:N2} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("========================================================================================================================");

@@ -1,5 +1,4 @@
-﻿
-namespace CarsStore
+﻿namespace CarsStore
 {
     public abstract class CarBase : ICarsStore
     {
@@ -15,19 +14,14 @@ namespace CarsStore
 
         public string CarBand { get; private set; }
 
-        public string CarModel { get;private set; }
+        public string CarModel { get; private set; }
 
         public float CarPrice { get; private set; }
 
-        public abstract void AddCar(float car);
+        public abstract void AddDailySale(int car);
 
-        public abstract void AddCar(string car);
+        public abstract void AddDailySale(string car);
 
-        public abstract void AddCar(double car);
-
-        public abstract void AddCar(int car);
-
-        
         public abstract Statistics GetStatistics();
     }
 }

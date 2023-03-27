@@ -12,13 +12,13 @@ namespace CarsStore
 
         }
 
-        public override void AddDailySale(int car)
+        public override void AddDailySale(int cars)
         {
-            if (car >= 0 && car <= 25)
+            if (cars >= 0 && cars <= 25)
             {
                 using (var writer = File.AppendText(fileName))
                 {
-                    writer.WriteLine(car);
+                    writer.WriteLine(cars);
                 }
 
                 if (CarAdded != null)
@@ -32,13 +32,13 @@ namespace CarsStore
             }
         }
 
-        public override void AddDailySale(string car)
+        public override void AddDailySale(string cars)
         {
-            if (int.TryParse(car, out int result))
+            if (int.TryParse(cars, out int result))
             {
                 this.AddDailySale(result);
             }
-            else if (char.TryParse(car, out char letter))
+            else if (char.TryParse(cars, out char letter))
             {
                 this.AddDailySale(letter);
             }

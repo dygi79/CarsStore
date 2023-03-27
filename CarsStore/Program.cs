@@ -3,7 +3,7 @@
 Console.WriteLine("Witamy w programie CarStore do obsługi magazynu samochodowego");
 Console.WriteLine("=============================================================");
 Console.WriteLine();
-var passengerCar = new PassengerCar("Audi", "osobowy", 1000);
+var passengerCar = new PassengerCar("BMW", "osobowy", 1000);
 passengerCar.CarAdded += PassengerCar_AddDailySale;
 
 void PassengerCar_AddDailySale(object sender, EventArgs args)
@@ -32,7 +32,7 @@ while (true)
     }
 }
 
-var truckCar = new TruckCar("Audi", "ciężarowy", 8000);
+var truckCar = new TruckCar("MAN", "ciężarowy", 8000);
 truckCar.CarAdded += TruckCar_AddDailySale;
 
 void TruckCar_AddDailySale(object sender, EventArgs args)
@@ -72,22 +72,22 @@ for (int i = 0; i < totalcars.Length; i++)
 
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano  samochodów osobowych marki Audi:{statisticsPassengerCar.Sum} sztuk.");
+Console.WriteLine($"Łącznie sprzedano  samochodów osobowych marki {passengerCar.CarBand}:{statisticsPassengerCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych marki Audi: {statisticsTruckCar.Sum} sztuk.");
+Console.WriteLine($"Łącznie sprzedano samochodów ciężarowych marki {truckCar.CarBand}: {statisticsTruckCar.Sum} sztuk.");
 Console.WriteLine("=======================================================================================================================");
-Console.WriteLine($"Łącznie sprzedano wszystkich samochodów marki Audi: {statisticsTotalCar} sztuk.");
+Console.WriteLine($"Łącznie sprzedano wszystkich samochodów osobowych marki {passengerCar.CarBand} oraz samocohdów ciężarowych marki {truckCar.CarBand}: {statisticsTotalCar} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Min} sztuk.");
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów osobowych marki {passengerCar.CarBand} w ciągu jednego dnia: {statisticsPassengerCar.Min} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów osobowych marki {passengerCar.CarBand} w ciągu jednego dnia: {statisticsPassengerCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych marki Audi w ciągu jednego dnia: {statisticsPassengerCar.Average:N2} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów osobowych marki {passengerCar.CarBand} w ciągu jednego dnia: {statisticsPassengerCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
+Console.WriteLine($"Najniższa ilość sprzedanych samochodów ciężarowych marki {truckCar.CarBand} w ciągu jednego dnia: {statisticsTruckCar.Min} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
+Console.WriteLine($"Najwyższa ilość sprzedanych samochodów ciężarowych marki {truckCar.CarBand} w ciągu jednego dnia: {statisticsTruckCar.Max} sztuk.");
 Console.WriteLine("========================================================================================================================");
-Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych marki Audi w ciągu jednego dnia: {statisticsTruckCar.Average:N2} sztuk.");
+Console.WriteLine($"Średina ilość sprzedanych samochodów ciężarowych marki {truckCar.CarBand} w ciągu jednego dnia: {statisticsTruckCar.Average:N2} sztuk.");
 Console.WriteLine("========================================================================================================================");
 Console.WriteLine("========================================================================================================================");
